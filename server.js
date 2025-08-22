@@ -7,12 +7,16 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb+srv://joseaj941:Josephin@0904@cluster0.lq4v06r.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect(
+  "mongodb+srv://joseaj941:Josephin%400904@cluster0.lq4v06r.mongodb.net/mydb?retryWrites=true&w=majority&appName=Cluster0",
+  {
     useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+    useUnifiedTopology: true,
+  }
+)
 .then(() => console.log("MongoDB Atlas Connected"))
-.catch(err => console.log(err));
+.catch(err => console.error("MongoDB connection error:", err));
+
 
 const itemRoutes = require('./routes/itemRoutes');
 app.use('/api/items', itemRoutes);
